@@ -8,17 +8,20 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# --- CUSTOM CSS (No Gap & One Screen Fix) ---
+# -- CUSTOM CSS (No Gap & One Screen Fix) ---
+# --- CUSTOM CSS (Clean Birthday Theme & Aesthetic) ---
 st.markdown("""
     <style>
-    /* 1. Background and overscroll fix */
-    html, body, [data-testid="stAppViewContainer"] {
+    /* 1. Background with subtle Birthday pattern */
+    [data-testid="stAppViewContainer"] {
+        background-color: #fff0f3 !important;
+        background-image: radial-gradient(#ffb3c1 0.6px, transparent 0.6px) !important;
+        background-size: 30px 30px !important;
         overscroll-behavior-y: none !important;
         overflow: hidden !important; 
     }
-    .stApp { background-color: #fff0f3 !important; }
-    
-    /* 2. GAP REMOVAL: Container padding zero kora */
+
+    /* 2. Page Padding Fix */
     .main .block-container { 
         padding-top: 0.5rem !important; 
         padding-bottom: 0rem !important;
@@ -27,40 +30,56 @@ st.markdown("""
         max-width: 100%;
     }
 
-    /* 3. Elements-er majher gap komanon */
+    /* 3. Text Visibility (Deep Wine Color) */
+    h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
+        color: #5e001f !important;
+        font-weight: 600 !important;
+        line-height: 1.2 !important;
+    }
+
+    /* 4. Light Yellow/Gold Buttons (Attactive & Visible) */
+    .stButton>button {
+        width: 100%;
+        border-radius: 20px;
+        background-color: #fffae6 !important; /* Light Yellow */
+        color: #5e001f !important;
+        border: 2px solid #ff4b6b !important;
+        height: 2.5em !important;
+        font-weight: bold !important;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .stButton>button:active {
+        background-color: #ff4b6b !important;
+        color: white !important;
+    }
+
+    /* 5. Menu/Selectbox Styling */
+    div[data-baseweb="select"] > div {
+        background-color: #fffae6 !important;
+        color: #5e001f !important;
+        border: 1px solid #ff4b6b !important;
+        height: 2.5em !important;
+    }
+
+    /* 6. Gap Removal between elements */
     [data-testid="stVerticalBlock"] > div {
-        gap: 0.2rem !important; /* Element gulo ghasaghashi thakbe */
+        gap: 0.1rem !important;
         margin-top: 0rem !important;
     }
 
-    /* 4. Text sizing compact kora */
-    h1 { font-size: 1rem !important; margin: 0 !important; padding: 0 !important; }
-    h2 { font-size: 0.9rem !important; margin: 0 !important; }
-    p, span, label, .stMarkdown { font-size: 0.75rem !important; color: #4b001d !important; line-height: 1.1 !important; }
-
-    /* 5. Selectbox (Menu) compact kora */
-    div[data-baseweb="select"] {
-        margin-top: -10px !important;
-    }
-
-    /* 6. Button compact kora */
-    .stButton>button {
-        height: 2.2em !important;
-        font-size: 0.75rem !important;
-        margin-top: 0.2rem !important;
-    }
-
-    /* 7. Image size fix */
+    /* 7. Image Styling */
     [data-testid="stImage"] img {
-        max-height: 180px !important; /* Screen size onujayi adjust kora */
-        width: auto !important;
-        margin: auto;
+        max-height: 200px !important;
+        border-radius: 15px;
+        border: 3px solid #ff4b6b;
     }
 
-    /* Hide redundant elements */
+    /* Hide Streamlit Header/Footer */
     [data-testid="stHeader"], footer { visibility: hidden; }
     </style>
     """, unsafe_allow_html=True)
+
 
 
 
