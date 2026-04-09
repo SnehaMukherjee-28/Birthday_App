@@ -89,34 +89,44 @@ option = st.selectbox("Choose an option to start:",
 
 st.divider()
 
-# --- 4. OPTION 1: MEMORY BOOK ---
+# # --- OPTION 1: MEMORY BOOK (Manual Slide) ---
 if option == "1. আমাদের খিচুড়ি":
-    st.header("📸 আমাদের ঝ্যাঁকন্যাকা সাতকাহন")
-    st.write("আমাদের বিশেষ মুহূর্তে টেপ আরওওওওওওওওওওওও জোড়ে 😜, r ওপাশটাতে সরাও তো একটু!:")
-
-    # 9 Tabs are too many for mobile view, but since you added them, use_container_width will help.
-    tabs = st.tabs(["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9"])
-
+    st.markdown("### 📸 আমাদের ঝ্যাঁকন্যাকা সাতকাহন")
+    
     memories = [
-        {"file": "photo1.jpg", "caption": "কপাল পোড়ার প্রথম ধাপ,দিনটা কবে  তুমি  বলবে 😉✨..."},
-        {"file": "photo2.jpg", "caption": "যত কাণ্ড  বেহালাতে!"},
+        {"file": "photo1.jpg", "caption": "কপাল পোড়ার প্রথম ধাপ, দিনটা কবে তুমি বলবে 😉✨..."},
+        {"file": "photo2.jpg", "caption": "যত কাণ্ড বেহালাতে!"},
         {"file": "photo3.jpg", "caption": "ছলচাতুরিতে বশীকরণ"},
-        {"file": "photo4.jpg", "caption": "ভয় জয় করে এক নিরীহ হরিণ শিশুর বাঘের ডেরায় হাজিরা! 🦌🐅"},
-        {"file": "photo5.jpg", "caption": "সেই কুইন অফ হিলসের কোলে হাজারো রোমান্স আর মিষ্টি বকাঝকার সাতকাহন শেষে, এই অক্টোবরে কি তবে ভাইজাগ নয়, অন্য কোনো রহস্যময় ডেরায় জমবে  জীবনের সেরা ঝকঝকে মহরত?✨"},
+        {"file": "photo4.jpg", "caption": "ভয় জয় করে এক নিরীহ হরিণ শিশু! 🦌🐅"},
+        {"file": "photo5.jpg", "caption": "ভাইজাগ নয়, অন্য কোনো রহস্যময় ডেরায়? ✨"},
         {"file": "photo6.jpg", "caption": "Ghutnu রানী, বড়ই সেয়ানি! 👑✨🥰"},
-        {"file": "photo7.jpg", "caption": "আমরা দুজনে একসাথে থাকা মানেই মোহুনবাগানের জয় নিশ্চিত, তাই লক্ষ্মীটি হয়ে থাকো—আমার সাথে একদম No ঝগড়া!💚🏹❤️"},
-        {"file": "photo8.jpg", "caption": "লাভ ইউ ওয়ালি বেস্ট ফ্রেন্ড আর সবার ছবি দিয়ে একটা কোলাজ ...ওনাকে তোমার মনের মণিকোঠায় খুব যত্ন করে রেখে দিও... আর বাকিদের জন্য রইল আমার অনেকটা ভালোবাসা! ❤️✨"},
-        {"file": "photo9.jpg","caption": "অবশেষে বলি, আমার সাথে চল একটু পথ যদি চাস... ভালো থাকিস খুব মাগি! ❤️✨"}
+        {"file": "photo7.jpg", "caption": "মোহুনবাগানের জয় নিশ্চিত... No ঝগড়া! 💚🏹❤️"},
+        {"file": "photo8.jpg", "caption": "লাভ ইউ ওয়ালি বেস্ট ফ্রেন্ড কোলাজ... ❤️✨"},
+        {"file": "photo9.jpg", "caption": "চল একটু পথ যদি চাস... ভালো থাকিস! ❤️✨"}
     ]
 
-    for i, tab in enumerate(tabs):
-        with tab:
-            try:
-                # use_container_width helps image adjust to mobile width
-                st.image(memories[i]["file"], use_container_width=True)
-                st.subheader(memories[i]["caption"])
-            except:
-                st.warning(f"{memories[i]['file']} upload kora hoyni ekhono.")
+    # Session State to keep track of photo index
+    if 'photo_index' not in st.session_state:
+        st.session_state.photo_index = 0
+
+    # Show Current Image
+    current_img = memories[st.session_state.photo_index]
+    st.image(current_img["file"], use_container_width=True)
+    st.caption(current_img["caption"])
+
+    # Slide Buttons (Side by Side)
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("⬅️ Previous"):
+            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(memories)
+            st.rerun()
+    with col2:
+        if st.button("Next ➡️"):
+            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(memories)
+            st.rerun()
+    
+    st.write(f"Moment {st.session_state.photo_index + 1} of {len(memories)}")
+
 
 # --- 5. OPTION 2: DAILY LOVE NOTES ---
 elif option == "2. রোজনামচায় ঘুম-তাড়ানি":
