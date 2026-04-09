@@ -8,40 +8,60 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
+# --- CUSTOM CSS (No Gap & One Screen Fix) ---
 st.markdown("""
     <style>
+    /* 1. Background and overscroll fix */
     html, body, [data-testid="stAppViewContainer"] {
         overscroll-behavior-y: none !important;
-        overflow: hidden !important; /* Fixed screen */
+        overflow: hidden !important; 
     }
     .stApp { background-color: #fff0f3 !important; }
     
-    h1 { font-size: 1.1rem !important; margin: 0 !important; }
-    p, span, label, .stMarkdown { font-size: 0.8rem !important; color: #4b001d !important; }
-
-    /* Button and UI compact */
-    .stButton>button {
-        border-radius: 10px;
-        background-color: #ff4b6b !important;
-        color: white !important;
-        height: 2.5em !important;
-        font-size: 0.8rem !important;
+    /* 2. GAP REMOVAL: Container padding zero kora */
+    .main .block-container { 
+        padding-top: 0.5rem !important; 
+        padding-bottom: 0rem !important;
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+        max-width: 100%;
     }
 
-    /* Image compact logic */
+    /* 3. Elements-er majher gap komanon */
+    [data-testid="stVerticalBlock"] > div {
+        gap: 0.2rem !important; /* Element gulo ghasaghashi thakbe */
+        margin-top: 0rem !important;
+    }
+
+    /* 4. Text sizing compact kora */
+    h1 { font-size: 1rem !important; margin: 0 !important; padding: 0 !important; }
+    h2 { font-size: 0.9rem !important; margin: 0 !important; }
+    p, span, label, .stMarkdown { font-size: 0.75rem !important; color: #4b001d !important; line-height: 1.1 !important; }
+
+    /* 5. Selectbox (Menu) compact kora */
+    div[data-baseweb="select"] {
+        margin-top: -10px !important;
+    }
+
+    /* 6. Button compact kora */
+    .stButton>button {
+        height: 2.2em !important;
+        font-size: 0.75rem !important;
+        margin-top: 0.2rem !important;
+    }
+
+    /* 7. Image size fix */
     [data-testid="stImage"] img {
-        max-height: 200px !important;
+        max-height: 180px !important; /* Screen size onujayi adjust kora */
         width: auto !important;
         margin: auto;
-        display: block;
-        border-radius: 10px;
     }
-    
-    /* Hide extra space */
-    .main .block-container { padding: 0.5rem 1rem !important; }
+
+    /* Hide redundant elements */
     [data-testid="stHeader"], footer { visibility: hidden; }
     </style>
     """, unsafe_allow_html=True)
+
 
 
 # --- 1. BIRTHDAY SURPRISE ---
