@@ -8,54 +8,67 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# --- CUSTOM CSS (Advanced Mobile Fix) ---
+# -# --- CUSTOM CSS (Compact & One-Screen View) ---
 st.markdown("""
     <style>
-    /* Force browser to handle scroll correctly */
+    /* Browser features bondho kora */
     html, body, [data-testid="stAppViewContainer"] {
         overscroll-behavior-y: none !important;
-        overflow-y: auto !important;
+        overflow-y: hidden !important; /* Force no scroll on main container */
     }
 
     .stApp { 
         background-color: #fff0f3 !important;
     }
     
-    /* Text visibility fix */
-    h1, h2, h3, p, span, label, .stMarkdown, .stSubheader {
+    /* Font sizes compact kora jate ekbare dhore */
+    h1 { font-size: 1.2rem !important; margin-bottom: 0.5rem !important; }
+    h2 { font-size: 1rem !important; }
+    h3 { font-size: 0.9rem !important; }
+    p, span, label, .stMarkdown {
+        font-size: 0.85rem !important;
         color: #4b001d !important;
+        line-height: 1.2 !important;
     }
 
-    /* Tabs scroll fix for mobile */
-    div[data-testid="stTabs"] {
-        overflow-x: auto !important;
-        white-space: nowrap !important;
-    }
-
-    /* Main container padding and touch-action fix */
-    .main .block-container { 
-        padding-top: 2rem; 
-        padding-bottom: 15rem !important; 
-        max-width: 100%;
-        touch-action: pan-y !important; /* Force smooth vertical panning */
-    }
-
-    /* Button and Selectbox style */
-    .stButton>button {
-        width: 100%;
-        border-radius: 12px;
-        background-color: #ff4b6b !important;
-        color: white !important;
-        border: none;
-        height: 3.5em;
+    /* Selectbox/Menu compact */
+    div[data-baseweb="select"] > div {
+        height: 2.5em !important;
+        font-size: 0.85rem !important;
     }
     
-    div[data-baseweb="select"] > div {
-        background-color: white !important;
-        color: black !important;
+    /* Padding komiye dewa */
+    .main .block-container { 
+        padding-top: 1rem !important; 
+        padding-bottom: 1rem !important; 
+        max-width: 100%;
     }
+
+    /* Tabs compact kora */
+    button[data-baseweb="tab"] {
+        padding: 5px 10px !important;
+        font-size: 0.7rem !important;
+    }
+
+    /* Images compact kora */
+    [data-testid="stImage"] img {
+        max-height: 250px !important; /* Image size limit kora */
+        object-fit: contain !important;
+    }
+
+    /* Radio button options compact */
+    div[data-baseweb="radio"] label {
+        padding: 2px !important;
+        font-size: 0.8rem !important;
+    }
+
+    /* Hide unnecessary streamlit elements */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     </style>
     """, unsafe_allow_html=True)
+
 # --- 1. BIRTHDAY SURPRISE ---
 if day_of_year == BIRTHDAY_DAY_OF_YEAR:
     st.balloons()
