@@ -8,66 +8,41 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# -# --- CUSTOM CSS (Compact & One-Screen View) ---
 st.markdown("""
     <style>
-    /* Browser features bondho kora */
     html, body, [data-testid="stAppViewContainer"] {
         overscroll-behavior-y: none !important;
-        overflow-y: hidden !important; /* Force no scroll on main container */
+        overflow: hidden !important; /* Fixed screen */
     }
-
-    .stApp { 
-        background-color: #fff0f3 !important;
-    }
+    .stApp { background-color: #fff0f3 !important; }
     
-    /* Font sizes compact kora jate ekbare dhore */
-    h1 { font-size: 1.2rem !important; margin-bottom: 0.5rem !important; }
-    h2 { font-size: 1rem !important; }
-    h3 { font-size: 0.9rem !important; }
-    p, span, label, .stMarkdown {
-        font-size: 0.85rem !important;
-        color: #4b001d !important;
-        line-height: 1.2 !important;
-    }
+    h1 { font-size: 1.1rem !important; margin: 0 !important; }
+    p, span, label, .stMarkdown { font-size: 0.8rem !important; color: #4b001d !important; }
 
-    /* Selectbox/Menu compact */
-    div[data-baseweb="select"] > div {
+    /* Button and UI compact */
+    .stButton>button {
+        border-radius: 10px;
+        background-color: #ff4b6b !important;
+        color: white !important;
         height: 2.5em !important;
-        font-size: 0.85rem !important;
-    }
-    
-    /* Padding komiye dewa */
-    .main .block-container { 
-        padding-top: 1rem !important; 
-        padding-bottom: 1rem !important; 
-        max-width: 100%;
-    }
-
-    /* Tabs compact kora */
-    button[data-baseweb="tab"] {
-        padding: 5px 10px !important;
-        font-size: 0.7rem !important;
-    }
-
-    /* Images compact kora */
-    [data-testid="stImage"] img {
-        max-height: 250px !important; /* Image size limit kora */
-        object-fit: contain !important;
-    }
-
-    /* Radio button options compact */
-    div[data-baseweb="radio"] label {
-        padding: 2px !important;
         font-size: 0.8rem !important;
     }
 
-    /* Hide unnecessary streamlit elements */
-    #MainMenu {visibility: hidden;}
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    /* Image compact logic */
+    [data-testid="stImage"] img {
+        max-height: 200px !important;
+        width: auto !important;
+        margin: auto;
+        display: block;
+        border-radius: 10px;
+    }
+    
+    /* Hide extra space */
+    .main .block-container { padding: 0.5rem 1rem !important; }
+    [data-testid="stHeader"], footer { visibility: hidden; }
     </style>
     """, unsafe_allow_html=True)
+
 
 # --- 1. BIRTHDAY SURPRISE ---
 if day_of_year == BIRTHDAY_DAY_OF_YEAR:
