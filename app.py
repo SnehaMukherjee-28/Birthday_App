@@ -1,16 +1,38 @@
 import streamlit as st
 import time
 
+
 # App Configuration
 st.set_page_config(page_title="For My Ghutan", page_icon="❤️")
 
-# Custom CSS for look and feel
+BIRTHDAY_DAY_OF_YEAR = 99  
+
+# --- CUSTOM STYLE ---
 st.markdown("""
     <style>
     .main { background-color: #fff0f3; }
-    .stButton>button { width: 100%; border-radius: 20px; background-color: #ff4b6b; color: white; }
+    .stButton>button { width: 100%; border-radius: 20px; background-color: #ff4b6b; color: white; border: none; height: 3em;}
+    .bday-box { background-color: #ff4b6b; padding: 25px; border-radius: 15px; border: 4px solid #ffffff; color: white; text-align: center; margin-bottom: 20px; }
     </style>
     """, unsafe_allow_html=True)
+
+# --- APP LOGIC ---
+day_of_year = time.localtime().tm_yday
+
+# 1. Birthday Message Logic (Sudhu bday-r din e boro box dekhabe)
+if day_of_year == BIRTHDAY_DAY_OF_YEAR:
+    st.balloons()
+    st.markdown(f"""
+    <div class="bday-box">
+        <h1>🎂 Happy Birthday, Ghutnu! 🎂</h1>
+        <p style="font-size: 18px; line-height: 1.6;">
+            Ekhane tomar oi shobcheye boro message-ta boshau. <br>
+            Tumi jotokhushi boro para likhte paro, eta automatic box-er modhe adjust hoye jabe. <br>
+            "Tumi amar jibon-er shobcheye shundor manush..." 
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
 
 st.title("❤️ Happy Birthday Ghutnu/Pom/Papu/Pappu/Anupam/Dudu dealer/Badshah Dajjal! ❤️")
 st.subheader("তোর জন্য একটা বিশেষ উপহার...")
@@ -53,31 +75,77 @@ if option == "1. আমাদের খিচুড়ি":
 elif option == "2. রোজনামচায় ঘুম-তাড়ানি":
     st.header("💌 একদিন প্রতিদিন")
     notes = [
-        "You are the best thing that ever happened to me!",
-        "Tomar hashi-ta amar shobcheye favorite.",
-        "I'm so proud of everything you do.",
-        "Ajker din-ta khub bhalo katuk tomar!"
+        "গুগল বলছিল বড্ড বেশি ভালো ভালো কথা লিখতে, কিন্তু আমার কলমে তো অত ভালো মানুষী আসে না! তোমার ওই 'লাভ ইউ' ওয়ালি বেস্ট ফ্রেন্ড আর সবার ছবি দিয়ে একটা কোলাজ বানিয়েছিলাম, কোথাও শেয়ার করার জায়গা পাচ্ছিলাম না বলে এখানেই দিলাম। ওনাকে তোমার মনের মণিকোঠায় খুব যত্ন করে রেখে দিও... আর বাকিদের জন্য রইল আমার অনেকটা ভালোবাসা!জন্মদিনটা দারুণ ভাবে কাটা। পঁয়ত্রিশ মানে কিন্তু বুড়ো হয়ে গেছ! এবার সল্টলেক স্টেডিয়ামে বিয়ে করে মেসোর স্বপ্নটা পূরণ করে ফেলো। নাহলে অদূর ভবিষ্যতে সব দাঁত পড়ে যাবে, তখন কিন্তু আর কচি পাঁঠার মাংস চিবোতে পারবে না, আর কোনো মেয়ের... ও না, থাক!জনমদিন মুবারক জনাব!খুব ভালো থেকো। যতদিন আছি, এভাবেই রোজ তোমাকে জ্বালিয়ে যাব। আর সাবধান! ফোন থেকে এই অ্যাপটা কিন্তু ওড়াবে না একদম!Open it Daily for a surprise foronly 1 week",
+        "Ei to mone kore esechis!!! already missing me naki!!",
+        "roj sokale brush korbi",
+        "kibhabe jalabo vabchi..notun notun technique",
+        "vabchilam,365 days i jalabo. seta ar korbona..roj app khulte miss korchis tui..jai Hk... Vote dite sabdhane jabi",
+        "Joy Mohunbagan!! O na.khela picholo to..Vote er din jindaaaaabaad",
+        "Amar kothati furolo..note gach ti murolo..Love you Ghutnu.."
+        "Ar pabina amay kal theke..r khulteo hobena app ta..enjoy your life magi..Tata"
+        
     ]
-    # Ajker diner ekta random note dekhabe
-    day_of_year = time.localtime().tm_yday
     current_note = notes[day_of_year % len(notes)]
     st.info(current_note)
+    st.write("---")
+    st.caption("প্রতিদিন ঠিক দুপুর ১২টায় মেসেজ আসবে, তাই রোজ অ্যাপ খুলবি। ভুলে গেলে কিন্তু গাট্টা খাবি! আমার এই খাটনি যেন বিফলে না পাঠাস Ghutun..." 👊💥")
 
 # Option 3: Personalized Quiz
-elif option == "3. The 'How Well Do You Know Me' Quiz":
+elif option == "3. চেনা মুখুজ্যে বামনের পৈতে টেস্ট":
     st.header("🧠 The Quiz")
     score = 0
     
-    q1 = st.radio("Amader prothom kothay dekha hoyeche?", ["Park Street", "College Canteen", "Prinsep Ghat"])
-    if q1 == "Prinsep Ghat": # Answer change kore nio
+    q1 = st.radio("আমাদের প্রথম বড় বয়সে মোলাকাতের দিন তোর প্রথম প্রশ্নটা কী ছিল?", ["এই বোরিং জিনিসটা কতক্ষণ চলবে?", "তোর কতগুলো বয়ফ্রেন্ড?'"])
+    if q1 == "এই বোরিং জিনিসটা কতক্ষণ চলবে?": # Answer change kore nio
+        st.write("😘 উলি-বাবা-লে পুচু পুচু... তুই মনে রেখেছিস!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 🥺✨")
         score += 1
-        
-    q2 = st.radio("Amar favorite khabar ki?", ["Biryani", "Phuchka", "Chanar Dalna"])
-    if q2 == "Chanar Dalna": # Answer change kore nio
+    elif q1 is not None:
+        st.write("😡বাহ্!!! এটা ভুল করলি!!! গরু!! ছাগল!!! এইজন্যই বলি তুমি আমায় একটুও ভালোবাসো না। শুধুই বেস্ট ফ্রেন্ড... লাভ ইউ ওয়ালি তোমার চোখের মণি! 😤🙄")
+
+    # Question 2
+    q2 = st.radio("2. ঐ দিনটার তারিখ কত বল দেখি? আর আমি কী রঙের জামা পরেছিলাম!! এটা যদি ভুল করিস, তবে কিন্তু লাঁশ ফেলে দেব... একদম সাবধান!", ["২৬শে আগস্ট, সাদা", "২৭শে আগস্ট, সাদা", "২৬শে আগস্ট, লাল","২৭শে আগস্ট, লাল"], index=None)
+    if q2 == "২৬শে আগস্ট, লাল":
+        st.write("😘 যাক, এ যাত্রা বেঁচে গেলি তুই...")
         score += 1
-        
-    if st.button("Submit Quiz"):
-        st.success(f"Tomar score: {score}/2")
-        if score == 2:
+    elif q2 is not None:
+        st.write("😡 বাহ্ খুব ভালো!I hate you!" 🙄✨")
+
+    # Question 3
+    q3 = st.radio("3.আমার পছন্দের কাজ কী বল তো?", ["তোকে জ্বালানো", "তোর সাথে ঘুরতে বেরোনো", "তোর সাথে সিনেমা দেখা","আর তোর সাথে খেতে যাওয়া"], index=None)
+    if q3 == "তোকে জ্বালানো": # Swap if you like beaches!
+        st.write("😘 Correct! বুঝে গেছিস দেখছি আমার আসল মতলবটা কী!")
+        score += 1
+    elif q3 is not None:
+        st.write("সরি সোনা... তবে আমার কাছে তোকে জ্বালানোর চেয়ে বড় ইম্পর্ট্যান্ট কাজ আর কিচ্ছুটি নেই!" 😜🔥✨")
+
+    # Question 4
+    q4 = st.radio("4. আমার GPay পেমেন্ট পিন কী বল তো?😉🔐", ["212369","210499","639179"], index=None)
+    if q4 == "639179":
+        st.write("😘এটা কী করে জানলি!!!!!!!! উফফ্‌ Pompuuuuuuuuuuuuu Pompuuuuuuuuuuuuuuuuuuuu।🤯✨")
+        score += 1
+    elif q4 is not None:
+        st.write("😡 উহুহুহুহুউউউউউ... সব কিছুতেই তুই থাকবি নাকি Baal!! যা, তোর ওই ওয়েভলেংথ ম্যাচকারিণীর কাছে... হুহ্‌!🙄💅✨")
+
+    # Question 5
+    q5 = st.radio("5. আমাদের দুজনের একসাথে দেখা প্রথম মোহুনবাগানের ম্যাচ কোনটা?? এটা কিন্তু তোর পারা উচিত!", ["MBSG vs Kerala", "CMBSG vs FC Goa", "MBSG vs Bangalore"], index=None)
+    if q5 == "MBSG vs Bangalore":
+        st.write("😘 জানতাম তুই পারবি এটা.. জয় মোহুনবাগান!💚🏹❤️")
+        score += 1
+    elif q5 is not None:
+        st.write(" এ কী!!! এটা ভুললি কী করে!!! আপনার বেস্ট ফ্রেন্ড ছিলেন যে-ই-ই-ই-ই-ই-ই-ই-ই...!" 😱🤯✨")
+
+    # Question 6
+    q6 = st.radio("6. Tumi amake koto bhalobasho?", ["Ektu khani", "Onek beshi", "Infinite"], index=None)
+    if q6 == "Infinite":
+        st.write("😘 Chumu for you! I love you too.")
+        score += 1
+    elif q6 is not None:
+        st.write("😡 Maate ektu? Thik ache, dekhbo.")
+
+    st.divider()
+    if st.button("Submit My Final Score"):
+        if score == 6:
+            st.success(f"Perfect 6/6! Tumi shera! ❤️")
             st.balloons()
-            st.write("Tumi sotti amake khub bhalo jano! ❤️")
+        else:
+            st.warning(f"Tomar score {score}/6. Aro ektu bhalo kore chinte hobe amake! 😂")
