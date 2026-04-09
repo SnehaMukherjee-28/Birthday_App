@@ -2,7 +2,7 @@ import streamlit as st
 import time
 
 # App Configuration
-st.set_page_config(page_title="For My Love", page_icon="❤️")
+st.set_page_config(page_title="For My Ghutan", page_icon="❤️")
 
 # Custom CSS for look and feel
 st.markdown("""
@@ -12,26 +12,46 @@ st.markdown("""
     </style>
     """, unsafe_allow_html=True)
 
-st.title("❤️ Happy Birthday! ❤️")
-st.subheader("Tomar jonno choto ekta gift...")
+st.title("❤️ Happy Birthday Ghutnu/Pom/Papu/Pappu/Anupam/Dudu dealer/Badshah Dajjal! ❤️")
+st.subheader("তোর জন্য একটা বিশেষ উপহার...")
 
 # Main Menu (Tinte Option)
-option = st.radio("Choose an option to start:", ["1. Our Memory Book", "2. Daily Love Notes", "3. The 'How Well Do You Know Me' Quiz"])
+option = st.radio("Choose an option to start:", ["1. আমাদের খিচুড়ি", "2.রোজনামচায় ঘুম-তাড়ানি", "3. চেনা মুখুজ্যে বামনের পৈতে টেস্ট"])
 
 st.divider()
 
-# Option 1: Memory Book
-if option == "1. Our Memory Book":
-    st.header("📸 Our Memories")
-    st.write("Click koro amader kichu special moments dekhte:")
-    if st.button("Open Memory 1"):
-        st.image("https://via.placeholder.com/400x300.png?text=Tomader+Chobi+1", caption="Sei prothom dekha...")
-    if st.button("Open Memory 2"):
-        st.write("Ekhane tumi tomader purono kothopokothon likhte paro!")
+# Option 1: Memory Book (Slider style using Tabs)
+if option == "1. আমাদের খিচুড়ি":
+    st.header("📸 আমাদের ঝ্যাঁকন্যাকা সাতকাহন")
+    st.write("আমাদের বিশেষ মুহূর্তে টেপ আরওওওওওওওওওওওও জোড়ে 😜, r ওপাশটাতে সরাও তো একটু!:")
+
+    # 6-ta tab banano hochhe
+    tabs = st.tabs(["M1", "M2", "M3", "M4", "M5", "M6","M7","M8"])
+
+    memories = [
+        {"file": "photo1.jpg", "caption": "কপাল পোড়ার প্রথম ধাপ,দিনটা কবে  তুমি  বলবে 😉✨..."},
+        {"file": "photo2.jpg", "caption": "Aযত কাণ্ড  বেহালাতে!"},
+        {"file": "photo3.jpg", "caption": "ছলচাতুরিতে বশীকরণ"},
+        {"file": "photo4.jpg", "caption": "ভয় জয় করে এক নিরীহ হরিণ শিশুর বাঘের ডেরায় হাজিরা! 🦌🐅"},
+        {"file": "photo5.jpg", "caption": "সেই কুইন অফ হিলসের কোলে হাজারো রোমান্স আর মিষ্টি বকাঝকার সাতকাহন শেষে, এই অক্টোবরে কি তবে ভাইজাগ নয়, অন্য কোনো রহস্যময় ডেরায় জমবে  জীবনের সেরা ঝকঝকে মহরত?✨"},
+        {"file": "photo6.jpg", "caption": "Ghutnu রানী, বড়ই সেয়ানি! 👑✨🥰"},
+        {"file": "photo7.jpg", "caption": "আমরা দুজনে একসাথে থাকা মানেই মোহুনবাগানের জয় নিশ্চিত, তাই লক্ষ্মীটি হয়ে থাকো—আমার সাথে একদম No ঝগড়া!💚🏹❤️"},
+        {"file": "photo8.jpg", "cঅবশেষে বলি, আমার সাথে চল একটু পথ যদি চাস... ভালো থাকিস খুব গি! ❤️✨"}
+    ]
+
+    # Prottekta tab-er bhetore ekta kore image r caption
+    for i, tab in enumerate(tabs):
+        with tab:
+            try:
+                st.image(memories[i]["file"], use_container_width=True)
+                st.subheader(memories[i]["caption"])
+            except:
+                st.warning(f"{memories[i]['file']} upload kora hoyni ekhono.")
+
 
 # Option 2: Daily Love Notes
-elif option == "2. Daily Love Notes":
-    st.header("💌 Daily Notes")
+elif option == "2. রোজনামচায় ঘুম-তাড়ানি":
+    st.header("💌 একদিন প্রতিদিন")
     notes = [
         "You are the best thing that ever happened to me!",
         "Tomar hashi-ta amar shobcheye favorite.",
