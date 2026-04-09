@@ -8,49 +8,48 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# --- CUSTOM CSS (Smooth Scroll & Mobile Look) ---
+# --- CUSTOM CSS (Visibility & Scroll Fix) ---
 st.markdown("""
     <style>
-    /* Background and Padding */
-    .stApp { background-color: #fff0f3; }
+    /* Force background color to Pinkish-White */
+    .stApp { background-color: #fff0f3 !important; }
     
-    /* Scroll and padding fix for mobile */
+    /* Force all text to be dark/black for visibility */
+    h1, h2, h3, p, span, label, .stMarkdown, .stSubheader {
+        color: #4b001d !important;
+    }
+
+    /* Radio button options color fix */
+    div[data-baseweb="radio"] label {
+        color: #4b001d !important;
+    }
+    
+    /* Scroll and padding fix */
     .main .block-container { padding-top: 2rem; padding-bottom: 5rem; }
 
     /* Button Styling */
     .stButton>button {
         width: 100%;
         border-radius: 12px;
-        background-color: #ff4b6b;
-        color: white;
+        background-color: #ff4b6b !important;
+        color: white !important;
         border: none;
         height: 3.5em;
         font-weight: bold;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
     }
     
-    /* Birthday Box Styling */
-    .bday-box {
-        background: linear-gradient(45deg, #ff4b6b, #ff8e8e);
-        padding: 20px;
-        border-radius: 15px;
-        color: white;
-        text-align: center;
-        margin-bottom: 25px;
-        box-shadow: 0px 5px 15px rgba(255, 75, 107, 0.4);
+    /* Selectbox (Menu) styling fix */
+    div[data-baseweb="select"] > div {
+        background-color: white !important;
+        color: black !important;
     }
-
-    /* Custom Header for Mobile */
-    .mobile-header {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ff4b6b;
-        text-align: center;
-        margin-bottom: 10px;
+    
+    /* Information box text color */
+    .stAlert p {
+        color: #4b001d !important;
     }
     </style>
     """, unsafe_allow_html=True)
-
 # --- 1. BIRTHDAY SURPRISE ---
 if day_of_year == BIRTHDAY_DAY_OF_YEAR:
     st.balloons()
