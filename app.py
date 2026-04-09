@@ -8,11 +8,14 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# --- CUSTOM CSS (Visibility & Scroll Fix) ---
+# --- CUSTOM CSS (Smooth Scroll & Pull-to-Refresh Fix) ---
 st.markdown("""
     <style>
-    /* Force background color to Pinkish-White */
-    .stApp { background-color: #fff0f3 !important; }
+    /* Force background color */
+    .stApp { 
+        background-color: #fff0f3 !important;
+        overscroll-behavior-y: contain; /* Pull to refresh bondho korbe */
+    }
     
     /* Force all text to be dark/black for visibility */
     h1, h2, h3, p, span, label, .stMarkdown, .stSubheader {
@@ -24,8 +27,13 @@ st.markdown("""
         color: #4b001d !important;
     }
     
-    /* Scroll and padding fix */
-    .main .block-container { padding-top: 2rem; padding-bottom: 5rem; }
+    /* Scroll and padding fix - mobile specific */
+    .main .block-container { 
+        padding-top: 2rem; 
+        padding-bottom: 10rem; /* Niche ektu beshi jayga dilam scroll easy korte */
+        max-width: 100%;
+        overflow-y: auto;
+    }
 
     /* Button Styling */
     .stButton>button {
@@ -42,11 +50,6 @@ st.markdown("""
     div[data-baseweb="select"] > div {
         background-color: white !important;
         color: black !important;
-    }
-    
-    /* Information box text color */
-    .stAlert p {
-        color: #4b001d !important;
     }
     </style>
     """, unsafe_allow_html=True)
