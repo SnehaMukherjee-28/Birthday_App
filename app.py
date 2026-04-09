@@ -10,18 +10,18 @@ day_of_year = time.localtime().tm_yday
 
 # -- CUSTOM CSS (No Gap & One Screen Fix) ---
 # --- CUSTOM CSS (Clean Birthday Theme & Aesthetic) ---
+# --- CUSTOM CSS (Clean Heart Background & Buttons) ---
 st.markdown("""
     <style>
-    /* 1. Background with subtle Birthday pattern */
+    /* 1. Background with Heart Pattern Icon */
     [data-testid="stAppViewContainer"] {
         background-color: #fff0f3 !important;
-        background-image: radial-gradient(#ffb3c1 0.6px, transparent 0.6px) !important;
-        background-size: 30px 30px !important;
+        background-image: url("https://www.transparenttextures.com/patterns/pink-rice.png") !important; /* Halka texture */
         overscroll-behavior-y: none !important;
         overflow: hidden !important; 
     }
 
-    /* 2. Page Padding Fix */
+    /* 2. Container Padding Fix for Mobile Screen */
     .main .block-container { 
         padding-top: 0.5rem !important; 
         padding-bottom: 0rem !important;
@@ -30,28 +30,25 @@ st.markdown("""
         max-width: 100%;
     }
 
-    /* 3. Text Visibility (Deep Wine Color) */
+    /* 3. Text Colors (Deep Wine/Maroon) */
     h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
         color: #5e001f !important;
         font-weight: 600 !important;
-        line-height: 1.2 !important;
+        line-height: 1.1 !important;
+        font-size: 0.85rem !important;
     }
 
-    /* 4. Light Yellow/Gold Buttons (Attactive & Visible) */
+    /* 4. Light Yellow/Gold Buttons */
     .stButton>button {
         width: 100%;
-        border-radius: 20px;
-        background-color: #fffae6 !important; /* Light Yellow */
+        border-radius: 15px;
+        background-color: #fffae6 !important;
         color: #5e001f !important;
         border: 2px solid #ff4b6b !important;
-        height: 2.5em !important;
+        height: 2.2em !important;
         font-weight: bold !important;
-        box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .stButton>button:active {
-        background-color: #ff4b6b !important;
-        color: white !important;
+        font-size: 0.8rem !important;
+        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
     }
 
     /* 5. Menu/Selectbox Styling */
@@ -62,20 +59,20 @@ st.markdown("""
         height: 2.5em !important;
     }
 
-    /* 6. Gap Removal between elements */
+    /* 6. Gap Removal */
     [data-testid="stVerticalBlock"] > div {
         gap: 0.1rem !important;
         margin-top: 0rem !important;
     }
 
-    /* 7. Image Styling */
+    /* 7. Image Border and Size */
     [data-testid="stImage"] img {
-        max-height: 200px !important;
+        max-height: 180px !important;
         border-radius: 15px;
-        border: 3px solid #ff4b6b;
+        border: 3px solid #ff4b6b !important;
     }
 
-    /* Hide Streamlit Header/Footer */
+    /* Hide Streamlit elements */
     [data-testid="stHeader"], footer { visibility: hidden; }
     </style>
     """, unsafe_allow_html=True)
