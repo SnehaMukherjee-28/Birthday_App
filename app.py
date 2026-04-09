@@ -5,7 +5,7 @@ import time
 # App Configuration
 st.set_page_config(page_title="For My Ghutan", page_icon="❤️")
 
-BIRTHDAY_DAY_OF_YEAR = 99  
+BIRTHDAY_DAY_OF_YEAR = 111  
 
 # --- CUSTOM STYLE ---
 st.markdown("""
