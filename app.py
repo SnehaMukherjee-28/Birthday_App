@@ -8,79 +8,69 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# --- CUSTOM CSS (Final Clean Birthday Theme) ---
+# --- CUSTOM CSS (Final Fix: No Garbage Text & No Squished Images) ---
 st.markdown("""
     <style>
-    /* 1. Background Pattern - Romantic Hearts */
+    /* 1. Background with Heart Pattern */
     [data-testid="stAppViewContainer"] {
         background-color: #fff0f3 !important;
-        background-image: url("https://www.transparenttextures.com/patterns/hearts.png") !important;
-        background-size: 200px 200px !important;
-        overscroll-behavior-y: none !important;
+        background-image: url("https://img.icons8.com/cotton/64/000000/hearts--v2.png") !important; 
+        background-size: 80px 80px !important;
+        background-repeat: repeat !important;
+        background-blend-mode: overlay !important;
+        overscroll-behavior-y: contain !important;
         overflow: hidden !important; 
     }
 
-    /* 2. Compact Padding for One-Screen View */
+    /* 2. Container Padding */
     .main .block-container { 
         padding-top: 0.5rem !important; 
-        padding-bottom: 0rem !important;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+        padding-bottom: 1rem !important;
+        max-width: 100%;
     }
 
-    /* 3. Text Visibility (Dark Maroon Color) */
+    /* 3. Image Aspect Ratio Fix (Chyapta bondho korbe) */
+    [data-testid="stImage"] img {
+        max-width: 100% !important;
+        max-height: 250px !important; /* Height limit */
+        width: auto !important;       /* Aspect ratio maintain korbe */
+        height: auto !important;      /* Chyapta hobe na */
+        object-fit: contain !important; 
+        border-radius: 12px;
+        border: 3px solid #ff4b6b !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 4. Text & Header Compact */
     h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
         color: #5e001f !important;
         font-weight: 600 !important;
+        font-size: 0.8rem !important;
         line-height: 1.1 !important;
-        font-size: 0.85rem !important;
     }
 
-    /* 4. Light Yellow / Gold Buttons */
+    /* 5. Light Yellow Buttons */
     .stButton>button {
-        width: 100%;
-        border-radius: 20px;
-        background-color: #fff9db !important;
+        width: 100% !important;
+        border-radius: 12px !important;
+        background-color: #fffae6 !important; 
         color: #5e001f !important;
         border: 2px solid #ff4b6b !important;
-        height: 2.3em !important;
+        height: 2.8em !important;
         font-weight: bold !important;
-        font-size: 0.8rem !important;
-    }
-    
-    .stButton>button:active {
-        background-color: #ff4b6b !important;
-        color: white !important;
     }
 
-    /* 5. Menu/Selectbox Styling */
-    div[data-baseweb="select"] > div {
-        background-color: #fff9db !important;
-        color: #5e001f !important;
-        border: 1px solid #ff4b6b !important;
-        height: 2.5em !important;
-    }
-
-    /* 6. Tight Gaps between elements */
+    /* 6. Gap Removal */
     [data-testid="stVerticalBlock"] > div {
         gap: 0.1rem !important;
-        margin-top: 0rem !important;
     }
 
-    /* 7. Image Border */
-    [data-testid="stImage"] img {
-        max-height: 180px !important;
-        border-radius: 15px;
-        border: 2px solid #ff4b6b !important;
-    }
-
-    /* Hide Streamlit elements */
-    [data-testid="stHeader"], footer { visibility: hidden; }
+    /* Hide Streamlit Header/Footer */
+    [data-testid="stHeader"], footer { visibility: hidden !important; }
     </style>
     """, unsafe_allow_html=True)
-
-
-
 
 # --- 1. BIRTHDAY SURPRISE ---
 if day_of_year == BIRTHDAY_DAY_OF_YEAR:
