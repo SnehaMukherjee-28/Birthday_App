@@ -8,29 +8,27 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# -- CUSTOM CSS (No Gap & One Screen Fix) ---
-# --- CUSTOM CSS (Clean Birthday Theme & Aesthetic) ---
-# --- CUSTOM CSS (Clean Heart Background & Buttons) ---
+# --- CUSTOM CSS (Final Clean Birthday Theme) ---
 st.markdown("""
     <style>
-    /* 1. Background with Heart Pattern Icon */
+    /* 1. Background Pattern - Romantic Hearts */
     [data-testid="stAppViewContainer"] {
         background-color: #fff0f3 !important;
-        background-image: url("https://www.transparenttextures.com/patterns/pink-rice.png") !important; /* Halka texture */
+        background-image: url("https://www.transparenttextures.com/patterns/hearts.png") !important;
+        background-size: 200px 200px !important;
         overscroll-behavior-y: none !important;
         overflow: hidden !important; 
     }
 
-    /* 2. Container Padding Fix for Mobile Screen */
+    /* 2. Compact Padding for One-Screen View */
     .main .block-container { 
         padding-top: 0.5rem !important; 
         padding-bottom: 0rem !important;
         padding-left: 1rem !important;
         padding-right: 1rem !important;
-        max-width: 100%;
     }
 
-    /* 3. Text Colors (Deep Wine/Maroon) */
+    /* 3. Text Visibility (Dark Maroon Color) */
     h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
         color: #5e001f !important;
         font-weight: 600 !important;
@@ -38,38 +36,42 @@ st.markdown("""
         font-size: 0.85rem !important;
     }
 
-    /* 4. Light Yellow/Gold Buttons */
+    /* 4. Light Yellow / Gold Buttons */
     .stButton>button {
         width: 100%;
-        border-radius: 15px;
-        background-color: #fffae6 !important;
+        border-radius: 20px;
+        background-color: #fff9db !important;
         color: #5e001f !important;
         border: 2px solid #ff4b6b !important;
-        height: 2.2em !important;
+        height: 2.3em !important;
         font-weight: bold !important;
         font-size: 0.8rem !important;
-        box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    }
+    
+    .stButton>button:active {
+        background-color: #ff4b6b !important;
+        color: white !important;
     }
 
     /* 5. Menu/Selectbox Styling */
     div[data-baseweb="select"] > div {
-        background-color: #fffae6 !important;
+        background-color: #fff9db !important;
         color: #5e001f !important;
         border: 1px solid #ff4b6b !important;
         height: 2.5em !important;
     }
 
-    /* 6. Gap Removal */
+    /* 6. Tight Gaps between elements */
     [data-testid="stVerticalBlock"] > div {
         gap: 0.1rem !important;
         margin-top: 0rem !important;
     }
 
-    /* 7. Image Border and Size */
+    /* 7. Image Border */
     [data-testid="stImage"] img {
         max-height: 180px !important;
         border-radius: 15px;
-        border: 3px solid #ff4b6b !important;
+        border: 2px solid #ff4b6b !important;
     }
 
     /* Hide Streamlit elements */
