@@ -9,67 +9,67 @@ BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
 # --- 2. MASTER CSS (Gap & Scroll Fix) ---
+# --- CUSTOM CSS (Final Fix: No Garbage Text & No Squished Images) ---
 st.markdown("""
     <style>
-    /* Header r extra space puro bondho */
-    [data-testid="stHeader"], footer { display: none !important; }
-    
-    .main .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 1rem !important;
-        margin-top: -45px !important; /* Mathar faka jayga katar jonno */
-        max-width: 100% !important;
-    }
-
-    /* Refresh Bondho korar logic */
-    html, body, [data-testid="stAppViewContainer"] {
-        overscroll-behavior-y: contain !important;
+    /* 1. Background with Heart Pattern */
+    [data-testid="stAppViewContainer"] {
         background-color: #fff0f3 !important;
-        background-image: url("https://www.transparenttextures.com/patterns/hearts.png") !important;
+        background-image: url("https://img.icons8.com/cotton/64/000000/hearts--v2.png") !important; 
+        background-size: 80px 80px !important;
+        background-repeat: repeat !important;
+        background-blend-mode: overlay !important;
+        overscroll-behavior-y: contain !important;
+        overflow: hidden !important; 
     }
 
-    /* Gaps between elements - Zero/Tight */
-    [data-testid="stVerticalBlock"] > div {
-        gap: 0.2rem !important;
-        margin: 0 !important;
+    /* 2. Container Padding */
+    .main .block-container { 
+        padding-top: 0.5rem !important; 
+        padding-bottom: 1rem !important;
+        max-width: 100%;
     }
 
-    /* Text compacting */
-    h1, h2, h3, p, span, label, .stMarkdown, .stCaption {
+    /* 3. Image Aspect Ratio Fix (Chyapta bondho korbe) */
+    [data-testid="stImage"] img {
+        max-width: 100% !important;
+        max-height: 250px !important; /* Height limit */
+        width: auto !important;       /* Aspect ratio maintain korbe */
+        height: auto !important;      /* Chyapta hobe na */
+        object-fit: contain !important; 
+        border-radius: 12px;
+        border: 3px solid #ff4b6b !important;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* 4. Text & Header Compact */
+    h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
         color: #5e001f !important;
         font-weight: 600 !important;
-        line-height: 1.0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 0.85rem !important;
+        font-size: 0.8rem !important;
+        line-height: 1.1 !important;
     }
 
-    /* Selectbox Styling */
-    div[data-baseweb="select"] > div {
-        background-color: #fff9db !important;
-        color: #5e001f !important;
-        border: 2px solid #ff4b6b !important;
-        height: 2.5rem !important;
-    }
-
-    /* Image Control */
-    [data-testid="stImage"] img {
-        max-height: 200px !important; 
-        object-fit: contain !important;
-        border-radius: 12px;
-        border: 2px solid #ff4b6b !important;
-    }
-
-    /* Button Styling */
+    /* 5. Light Yellow Buttons */
     .stButton>button {
         width: 100% !important;
-        background-color: #ff4b6b !important;
-        color: white !important;
-        border-radius: 10px !important;
-        height: 2.2em !important;
+        border-radius: 12px !important;
+        background-color: #fffae6 !important; 
+        color: #5e001f !important;
+        border: 2px solid #ff4b6b !important;
+        height: 2.8em !important;
         font-weight: bold !important;
-        border: none !important;
     }
+
+    /* 6. Gap Removal */
+    [data-testid="stVerticalBlock"] > div {
+        gap: 0.1rem !important;
+    }
+
+    /* Hide Streamlit Header/Footer */
+    [data-testid="stHeader"], footer { visibility: hidden !important; }
     </style>
     """, unsafe_allow_html=True)
 
