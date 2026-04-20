@@ -9,66 +9,77 @@ BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
 # --- CUSTOM CSS (Final Fix: No Garbage Text & No Squished Images) ---
+# --- ULTIMATE NO-GAP & ANTI-SCROLL CSS ---
 st.markdown("""
     <style>
-    /* 1. Background with Heart Pattern */
-    [data-testid="stAppViewContainer"] {
-        background-color: #fff0f3 !important;
-        background-image: url("https://img.icons8.com/cotton/64/000000/hearts--v2.png") !important; 
-        background-size: 80px 80px !important;
-        background-repeat: repeat !important;
-        background-blend-mode: overlay !important;
-        overscroll-behavior-y: contain !important;
-        overflow: hidden !important; 
+    /* 1. Remove Top Header & Blank Space completely */
+    [data-testid="stHeader"] {
+        display: none !important;
     }
-
-    /* 2. Container Padding */
-    .main .block-container { 
-        padding-top: 0.5rem !important; 
+    
+    /* Mathar faka jayga komanon */
+    .main .block-container {
+        padding-top: 0rem !important;
         padding-bottom: 1rem !important;
+        margin-top: -50px !important; /* Force content upwards */
         max-width: 100%;
     }
 
-    /* 3. Image Aspect Ratio Fix (Chyapta bondho korbe) */
-    [data-testid="stImage"] img {
-        max-width: 100% !important;
-        max-height: 250px !important; /* Height limit */
-        width: auto !important;       /* Aspect ratio maintain korbe */
-        height: auto !important;      /* Chyapta hobe na */
-        object-fit: contain !important; 
-        border-radius: 12px;
-        border: 3px solid #ff4b6b !important;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+    /* 2. Background Pattern */
+    [data-testid="stAppViewContainer"] {
+        background-color: #fff0f3 !important;
+        background-image: url("https://www.transparenttextures.com/patterns/hearts.png") !important;
+        overscroll-behavior-y: contain !important;
     }
 
-    /* 4. Text & Header Compact */
+    /* 3. Elements-er majher gap komanon (Compact) */
+    [data-testid="stVerticalBlock"] > div {
+        gap: 0.1rem !important;
+        margin-top: 0rem !important;
+    }
+
+    /* 4. Text & Header styling */
     h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
         color: #5e001f !important;
         font-weight: 600 !important;
-        font-size: 0.8rem !important;
+        font-size: 0.85rem !important;
         line-height: 1.1 !important;
+        margin: 0 !important;
     }
 
-    /* 5. Light Yellow Buttons */
+    /* 5. Image Fix (No Squishing & Compact) */
+    [data-testid="stImage"] img {
+        max-width: 100% !important;
+        max-height: 200px !important; 
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain !important;
+        border-radius: 12px;
+        border: 2px solid #ff4b6b !important;
+        display: block;
+        margin: 0.2rem auto !important;
+    }
+
+    /* 6. Light Yellow Buttons */
     .stButton>button {
         width: 100% !important;
-        border-radius: 12px !important;
+        border-radius: 10px !important;
         background-color: #fffae6 !important; 
         color: #5e001f !important;
         border: 2px solid #ff4b6b !important;
-        height: 2.8em !important;
+        height: 2.3em !important;
         font-weight: bold !important;
+        font-size: 0.8rem !important;
     }
 
-    /* 6. Gap Removal */
-    [data-testid="stVerticalBlock"] > div {
-        gap: 0.1rem !important;
+    /* 7. Selectbox compact */
+    div[data-baseweb="select"] > div {
+        background-color: #fffae6 !important;
+        height: 2.3em !important;
     }
 
-    /* Hide Streamlit Header/Footer */
-    [data-testid="stHeader"], footer { visibility: hidden !important; }
+    /* Hide Streamlit Footer */
+    footer { visibility: hidden !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -123,6 +134,7 @@ if option == "1. আমাদের খিচুড়ি":
     st.caption(current_img["caption"])
 
     # Slide Buttons (Side by Side)
+    # Slide Buttons Side by Side (Horizontal space saving)
     col1, col2 = st.columns(2)
     with col1:
         if st.button("⬅️ Previous"):
