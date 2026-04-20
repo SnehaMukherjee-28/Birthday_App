@@ -115,15 +115,26 @@ if option == "1. আমাদের খিচুড়ি":
     ]
 
     # Prottekta tab-er bhetore ekta kore image r caption
-    for i, tab in enumerate(tabs):
-        with tab:
-            try:
-                st.image(memories[i]["file"], use_container_width=True)
-                st.subheader(memories[i]["caption"])
-            except:
-                st.warning(f"{memories[i]['file']} upload kora hoyni ekhono.")
+    if 'photo_idx' not in st.session_state:
+        st.session_state.photo_idx = 0
+        
+    current_memory = memories[st.session_state.photo_idx]
+    
+    st.image(current_memory["file"], use_container_width=True)
+    st.markdown(f"<p style='text-align:center; font-style:italic;'>{current_memory['caption']}</p>", unsafe_allow_html=True)
 
-
+    # Buttons in columns
+    c1, c2 = st.columns(2)
+    with c1:
+        if st.button("⬅️ Previous"):
+            st.session_state.photo_idx = (st.session_state.photo_idx - 1) % len(memories)
+            st.rerun()
+    with c2:
+        if st.button("Next ➡️"):
+            st.session_state.photo_idx = (st.session_state.photo_idx + 1) % len(memories)
+            st.rerun()
+    
+    st.caption(f"Moment {st.session_state.photo_idx + 1} of {len(memories)}")
 # Option 2: Daily Love Notes
 elif option == "2. রোজনামচায় ঘুম-তাড়ানি":
     st.header("💌 একদিন প্রতিদিন")
