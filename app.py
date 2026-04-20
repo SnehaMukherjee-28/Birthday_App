@@ -9,15 +9,18 @@ BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
 # --- CUSTOM CSS (Final Fix: No Garbage Text & No Squished Images) ---
-# --- CLEAN & COMPACT CSS ---
+# --- CLEAN & COMPACT CSS (Top Gap Removed) ---
 st.markdown("""
     <style>
-    /* 1. Header r extra padding muche fela */
-    header, footer { visibility: hidden !important; height: 0px !important; }
+    /* 1. Header r extra padding puro muche fela */
+    [data-testid="stHeader"] {
+        display: none !important;
+    }
     
     .main .block-container {
-        padding-top: 1rem !important;    /* Mathay khub chotto gap */
-        padding-bottom: 2rem !important;
+        padding-top: 0rem !important;    /* Mathar faka jayga zero */
+        padding-bottom: 1rem !important;
+        margin-top: -50px !important;    /* Content-ke aro mathay tule dewa */
         max-width: 100% !important;
     }
 
@@ -27,33 +30,41 @@ st.markdown("""
         background-color: #fff0f3 !important;
     }
 
-    /* 3. Gap komanon element-er majhkane */
+    /* 3. Elements-er majher gap komanon */
     [data-testid="stVerticalBlock"] > div {
-        gap: 0.5rem !important;
+        gap: 0.1rem !important;
         margin: 0 !important;
     }
 
-    /* 4. Selectbox/Menu (No Blank/Black Issue) */
+    /* 4. Text & Header compacting */
+    h1, h2, h3, p, label, .stMarkdown, .stSubheader, .stCaption {
+        color: #5e001f !important;
+        font-weight: 600 !important;
+        line-height: 1.0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 5. Selectbox/Menu (Attractive styling) */
     div[data-baseweb="select"] > div {
         background-color: #fff9db !important;
         color: #5e001f !important;
         border: 2px solid #ff4b6b !important;
-        height: 3rem !important;
+        height: 2.5rem !important;
     }
 
-    /* 5. Chobi-r aspect ratio fix */
-    [data-testid="stImage"] img {
-        max-height: 250px !important; 
-        object-fit: contain !important;
-        border-radius: 12px;
-        border: 2px solid #ff4b6b !important;
-    }
-
-    /* 6. Text color fix */
-    h1, h2, h3, p, span, label, .stMarkdown {
+    /* 6. Buttons Styling */
+    .stButton>button {
+        width: 100% !important;
+        background-color: #fff9db !important;
         color: #5e001f !important;
-        line-height: 1.2 !important;
+        border: 2px solid #ff4b6b !important;
+        border-radius: 10px !important;
+        height: 2rem !important;
     }
+
+    /* Footer remove */
+    footer { visibility: hidden !important; }
     </style>
     """, unsafe_allow_html=True)
 
