@@ -9,77 +9,51 @@ BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
 # --- CUSTOM CSS (Final Fix: No Garbage Text & No Squished Images) ---
-# --- ULTIMATE NO-GAP & ANTI-SCROLL CSS ---
+# --- CLEAN & COMPACT CSS ---
 st.markdown("""
     <style>
-    /* 1. Remove Top Header & Blank Space completely */
-    [data-testid="stHeader"] {
-        display: none !important;
-    }
+    /* 1. Header r extra padding muche fela */
+    header, footer { visibility: hidden !important; height: 0px !important; }
     
-    /* Mathar faka jayga komanon */
     .main .block-container {
-        padding-top: 0rem !important;
-        padding-bottom: 1rem !important;
-        margin-top: -50px !important; /* Force content upwards */
-        max-width: 100%;
+        padding-top: 1rem !important;    /* Mathay khub chotto gap */
+        padding-bottom: 2rem !important;
+        max-width: 100% !important;
     }
 
-    /* 2. Background Pattern */
-    [data-testid="stAppViewContainer"] {
+    /* 2. Scrolling & Refresh Fix (Most Important) */
+    html, body, [data-testid="stAppViewContainer"] {
+        overscroll-behavior-y: contain !important; /* Pull-to-refresh bondho korbe */
         background-color: #fff0f3 !important;
-        background-image: url("https://www.transparenttextures.com/patterns/hearts.png") !important;
-        overscroll-behavior-y: contain !important;
     }
 
-    /* 3. Elements-er majher gap komanon (Compact) */
+    /* 3. Gap komanon element-er majhkane */
     [data-testid="stVerticalBlock"] > div {
-        gap: 0.1rem !important;
-        margin-top: 0rem !important;
-    }
-
-    /* 4. Text & Header styling */
-    h1, h2, h3, p, span, label, .stMarkdown, .stSubheader, .stCaption {
-        color: #5e001f !important;
-        font-weight: 600 !important;
-        font-size: 0.85rem !important;
-        line-height: 1.1 !important;
+        gap: 0.5rem !important;
         margin: 0 !important;
     }
 
-    /* 5. Image Fix (No Squishing & Compact) */
+    /* 4. Selectbox/Menu (No Blank/Black Issue) */
+    div[data-baseweb="select"] > div {
+        background-color: #fff9db !important;
+        color: #5e001f !important;
+        border: 2px solid #ff4b6b !important;
+        height: 3rem !important;
+    }
+
+    /* 5. Chobi-r aspect ratio fix */
     [data-testid="stImage"] img {
-        max-width: 100% !important;
-        max-height: 200px !important; 
-        width: auto !important;
-        height: auto !important;
+        max-height: 250px !important; 
         object-fit: contain !important;
         border-radius: 12px;
         border: 2px solid #ff4b6b !important;
-        display: block;
-        margin: 0.2rem auto !important;
     }
 
-    /* 6. Light Yellow Buttons */
-    .stButton>button {
-        width: 100% !important;
-        border-radius: 10px !important;
-        background-color: #fffae6 !important; 
+    /* 6. Text color fix */
+    h1, h2, h3, p, span, label, .stMarkdown {
         color: #5e001f !important;
-        border: 2px solid #ff4b6b !important;
-        height: 2.3em !important;
-        font-weight: bold !important;
-        font-size: 0.8rem !important;
+        line-height: 1.2 !important;
     }
-
-    /* 7. Selectbox compact */
-    div[data-baseweb="select"] > div {
-        background-color: #fffae6 !important;
-        height: 2.3em !important;
-    }
-
-    /* Hide Streamlit Footer */
-    footer { visibility: hidden !important; }
     </style>
     """, unsafe_allow_html=True)
 
@@ -125,28 +99,27 @@ if option == "1. আমাদের খিচুড়ি":
     ]
 
     # Session State to keep track of photo index
-    if 'photo_index' not in st.session_state:
-        st.session_state.photo_index = 0
+    if 'photo_idx' not in st.session_state:
+        st.session_state.photo_idx = 0
+        
+    current_memory = memories[st.session_state.photo_idx]
+    
+    # Chobi r caption thik bhabe show kora
+    st.image(current_memory["file"], use_container_width=True)
+    st.markdown(f"<p style='text-align:center; font-style:italic; font-size:14px;'>{current_memory['caption']}</p>", unsafe_allow_html=True)
 
-    # Show Current Image
-    current_img = memories[st.session_state.photo_index]
-    st.image(current_img["file"], use_container_width=True)
-    st.caption(current_img["caption"])
-
-    # Slide Buttons (Side by Side)
-    # Slide Buttons Side by Side (Horizontal space saving)
-    col1, col2 = st.columns(2)
-    with col1:
+    # Buttons in columns (Horizontal space saving)
+    c1, c2 = st.columns(2)
+    with c1:
         if st.button("⬅️ Previous"):
-            st.session_state.photo_index = (st.session_state.photo_index - 1) % len(memories)
+            st.session_state.photo_idx = (st.session_state.photo_idx - 1) % len(memories)
             st.rerun()
-    with col2:
+    with c2:
         if st.button("Next ➡️"):
-            st.session_state.photo_index = (st.session_state.photo_index + 1) % len(memories)
+            st.session_state.photo_idx = (st.session_state.photo_idx + 1) % len(memories)
             st.rerun()
     
-    st.write(f"Moment {st.session_state.photo_index + 1} of {len(memories)}")
-
+    st.caption(f"Moment {st.session_state.photo_idx + 1} of {len(memories)}")
 
 # --- 5. OPTION 2: DAILY LOVE NOTES ---
 elif option == "2. রোজনামচায় ঘুম-তাড়ানি":
