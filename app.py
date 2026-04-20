@@ -86,7 +86,7 @@ if day_of_year == BIRTHDAY_DAY_OF_YEAR:
     </div>
     """, unsafe_allow_html=True)
     
-st.title("❤️ Happy Birthday Ghutnu/Pom/Papu/Pappu/Anupam/Dudu dealer/Badshah Dajjal! ❤️")
+st.title("❤️ Happy Birthday Ghutnu/Pom/Papu/Pappu/Anupam/Dudu dealer/Badshah Dajjal/ঘুতু/ বেবো/ পেপো/ টিঙ্কা বাবা/ঘুত ঘুতান/ পোদু ঘুতান/Ponnon /PoduGhutan Roy Chowdhury/ বুনি/বুনি বুনান/Ponnon! ❤️")
 st.subheader("তোর জন্য একটা বিশেষ উপহার...")
 
 # --- 5. NAVIGATION ---
