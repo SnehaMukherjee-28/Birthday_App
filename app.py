@@ -89,10 +89,11 @@ if day_of_year == BIRTHDAY_DAY_OF_YEAR:
 st.title("❤️ Happy Birthday Ghutnu/Pom/Papu/Pappu/Anupam/Dudu dealer/Badshah Dajjal! ❤️")
 st.subheader("তোর জন্য একটা বিশেষ উপহার...")
 
-# Main Menu (Tinte Option)
-option = st.radio("Choose an option to start:", ["1. আমাদের খিচুড়ি", "2.রোজনামচায় ঘুম-তাড়ানি", "3. চেনা মুখুজ্যে বামনের পৈতে টেস্ট"])
+# --- 5. NAVIGATION ---
+option = st.selectbox("Choose an option:", 
+                      ["1. আমাদের খিচুড়ি", "2. রোজনামচায় ঘুম-তাড়ানি", "3. চেনা মুখুজ্যে বামনের পৈতে টেস্ট"])
 
-st.divider()
+st.write("---")
 
 # Option 1: Memory Book (Slider style using Tabs)
 if option == "1. আমাদের খিচুড়ি":
@@ -100,7 +101,7 @@ if option == "1. আমাদের খিচুড়ি":
     st.write("আমাদের বিশেষ মুহূর্তে টেপ আরওওওওওওওওওওওও জোড়ে 😜, r ওপাশটাতে সরাও তো একটু!:")
 
     # 6-ta tab banano hochhe
-    tabs = st.tabs(["M1", "M2", "M3", "M4", "M5", "M6","M7","M8","M9"])
+    #tabs = st.tabs(["M1", "M2", "M3", "M4", "M5", "M6","M7","M8","M9"])
 
     memories = [
         {"file": "photo1.jpg", "caption": "কপাল পোড়ার প্রথম ধাপ,দিনটা কবে  তুমি  বলবে 😉✨..."},
