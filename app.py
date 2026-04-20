@@ -8,45 +8,67 @@ st.set_page_config(page_title="For My Ghutnu", page_icon="❤️", layout="cente
 BIRTHDAY_DAY_OF_YEAR = 111
 day_of_year = time.localtime().tm_yday
 
-# --- CUSTOM CSS (Smooth Scroll & Design) ---
+# --- 2. MASTER CSS (Gap & Scroll Fix) ---
 st.markdown("""
     <style>
-    /* Background and Padding */
-    .stApp { background-color: #fff0f3; }
+    /* Header r extra space puro bondho */
+    [data-testid="stHeader"], footer { display: none !important; }
     
-    /* Scroll fix */
-    .main .block-container { padding-top: 2rem; padding-bottom: 5rem; }
+    .main .block-container {
+        padding-top: 0rem !important;
+        padding-bottom: 1rem !important;
+        margin-top: -45px !important; /* Mathar faka jayga katar jonno */
+        max-width: 100% !important;
+    }
+
+    /* Refresh Bondho korar logic */
+    html, body, [data-testid="stAppViewContainer"] {
+        overscroll-behavior-y: contain !important;
+        background-color: #fff0f3 !important;
+        background-image: url("https://www.transparenttextures.com/patterns/hearts.png") !important;
+    }
+
+    /* Gaps between elements - Zero/Tight */
+    [data-testid="stVerticalBlock"] > div {
+        gap: 0.2rem !important;
+        margin: 0 !important;
+    }
+
+    /* Text compacting */
+    h1, h2, h3, p, span, label, .stMarkdown, .stCaption {
+        color: #5e001f !important;
+        font-weight: 600 !important;
+        line-height: 1.0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 0.85rem !important;
+    }
+
+    /* Selectbox Styling */
+    div[data-baseweb="select"] > div {
+        background-color: #fff9db !important;
+        color: #5e001f !important;
+        border: 2px solid #ff4b6b !important;
+        height: 2.5rem !important;
+    }
+
+    /* Image Control */
+    [data-testid="stImage"] img {
+        max-height: 200px !important; 
+        object-fit: contain !important;
+        border-radius: 12px;
+        border: 2px solid #ff4b6b !important;
+    }
 
     /* Button Styling */
     .stButton>button {
-        width: 100%;
-        border-radius: 12px;
-        background-color: #ff4b6b;
-        color: white;
-        border: none;
-        height: 3.5em;
-        font-weight: bold;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    }
-    
-    /* Birthday Box Styling */
-    .bday-box {
-        background: linear-gradient(45deg, #ff4b6b, #ff8e8e);
-        padding: 20px;
-        border-radius: 15px;
-        color: white;
-        text-align: center;
-        margin-bottom: 25px;
-        box-shadow: 0px 5px 15px rgba(255, 75, 107, 0.4);
-    }
-
-    /* Custom Header for Mobile */
-    .mobile-header {
-        font-size: 24px;
-        font-weight: bold;
-        color: #ff4b6b;
-        text-align: center;
-        margin-bottom: 10px;
+        width: 100% !important;
+        background-color: #ff4b6b !important;
+        color: white !important;
+        border-radius: 10px !important;
+        height: 2.2em !important;
+        font-weight: bold !important;
+        border: none !important;
     }
     </style>
     """, unsafe_allow_html=True)
